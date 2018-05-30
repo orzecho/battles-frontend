@@ -1,5 +1,16 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-{{welcome-page}}
-{{!-- Feel free to remove this! --}}
+{{#bs-nav type=type justified=justified stacked=stacked as |nav|}}
+  {{#nav.item}}{{#nav.link-to "index"}}Strona główna{{/nav.link-to}}{{/nav.item}}
+  {{#nav.item}}{{#nav.link-to "projects.index"}}Projekty{{/nav.link-to}}{{/nav.item}}
+  {{#nav.item}}{{#nav.link-to "teams"}}Drużyny{{/nav.link-to}}{{/nav.item}}
+  {{#nav.item}}{{#nav.link-to "topics"}}Tematy{{/nav.link-to}}{{/nav.item}}
+  {{#nav.item}}{{#nav.link-to "battles"}}Bitwy{{/nav.link-to}}{{/nav.item}}
+  {{#nav.dropdown as |dd|}}
+    {{#dd.toggle}}Inne <span class="caret"></span>{{/dd.toggle}}
+    {{#dd.menu as |ddm|}}
+      {{#ddm.item}}{{#ddm.link-to "about"}}O stronie{{/ddm.link-to}}{{/ddm.item}}
+      {{#ddm.item}}<a href="https://nanokarrin.pl" class="dropdown-item">NanoKarrin</a>{{/ddm.item}}
+    {{/dd.menu}}
+  {{/nav.dropdown}}
+{{/bs-nav}}
 
 {{outlet}}
