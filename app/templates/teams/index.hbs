@@ -1,0 +1,59 @@
+<h1>Lista drużyn</h1>
+
+{{#unless currentUser.team}}
+  <p>
+    {{link-to "Załóż drużynę" "teams.new" }}
+  </p>
+{{/unless}}
+{{#if model.length}}
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th>
+          Nazwa
+        </th>
+        <th>
+          Członkowie
+        </th>
+        <th>
+          Lider
+        </th>
+        <th colspan="3">
+          Akcje
+        </th>
+      </tr>
+    </thead>
+    <tbody class="table-striped">
+      {{#each model as |team|}}
+        <tr>
+          <td>
+            {{team.name}}
+          </td>
+          <td>
+            <span>( {{#each team.usersWithoutDuplicates as |member|}}{{member.login}} {{/each}})</span>
+          </td>
+          <td>
+            {{team.leader.login}}
+          </td>
+          <td>
+            {{link-to "Edytuj" "teams.edit" team}}
+            {{link-to "Szczegóły" "teams.show" team}}
+          {{#if (eq team.leader.id currentUser.id)}}
+            <a href="#" {{action "remove" team}}>Usuń</a>
+          {{/if}}
+          {{#unless (eq team.id currentUser.team.id)}}
+            <a href="#" {{action "join" team}}>Dołącz</a>
+          {{/unless}}
+          {{#if (eq team.id currentUser.team.id)}}
+            <a href="#" {{action "leave" team}}>Opuść</a>
+          {{/if}}
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+{{else}}
+  <p id="blankslate">
+    No Teams found
+  </p>
+{{/if}}

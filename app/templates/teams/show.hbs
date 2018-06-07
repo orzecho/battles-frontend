@@ -1,0 +1,16 @@
+<p>
+  {{link-to "Powrót do listy drużyn" "teams.index" }}
+</p>
+
+<h1>Drużyna {{model.name}}</h1>
+
+<p>
+  <strong>Członkowie:</strong>
+  <span>( {{#each model.usersWithoutDuplicates as |member|}}{{member.login}} {{/each}})</span>
+</p>
+
+<p>
+  <strong>Założyciel:</strong>
+  <span>{{model.leader.login}}</span>
+</p>
+

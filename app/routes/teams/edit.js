@@ -1,4 +1,5 @@
-import Route from '@ember/routing/route';
+import Ember from 'ember';
+import SaveModelMixin from 'battles-frontend/mixins/teams/save-model-mixin';
 
-export default Route.extend({
+export default Ember.Route.extend(SaveModelMixin, {
 });

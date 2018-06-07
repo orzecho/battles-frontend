@@ -1,0 +1,42 @@
+<h1>Tags list</h1>
+
+<p>
+  {{link-to "New Tag" "tags.new" }}
+</p>
+
+{{#if model.length}}
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th>
+          Name
+        </th>
+        <th colspan="3">
+          Actions
+        </th>
+      </tr>
+    </thead>
+    <tbody class="table-striped">
+      {{#each model as |tag|}}
+        <tr>
+          <td>
+            {{tag.name}}
+          </td>
+          <td>
+            {{link-to "Edit" "tags.edit" tag}}
+          </td>
+          <td>
+            {{link-to "Show" "tags.show" tag}}
+          </td>
+          <td>
+            <a href="#" {{action "remove" tag}}>Remove</a>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+{{else}}
+  <p id="blankslate">
+    No Tags found
+  </p>
+{{/if}}

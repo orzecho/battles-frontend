@@ -7,10 +7,14 @@
   {{#nav.dropdown as |dd|}}
     {{#dd.toggle}}Inne <span class="caret"></span>{{/dd.toggle}}
     {{#dd.menu as |ddm|}}
-      {{#ddm.item}}{{#ddm.link-to "about"}}O stronie{{/ddm.link-to}}{{/ddm.item}}
       {{#ddm.item}}<a href="https://nanokarrin.pl" class="dropdown-item">NanoKarrin</a>{{/ddm.item}}
     {{/dd.menu}}
   {{/nav.dropdown}}
 {{/bs-nav}}
-
+<div class="container ml-2 mr-2">
 {{outlet}}
+</div>
+
+{{#each flashMessages.queue as |flash|}}
+  {{flash-message flash=flash}}
+{{/each}}

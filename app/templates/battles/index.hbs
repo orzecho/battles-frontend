@@ -1,0 +1,76 @@
+<h1>Lista bitew</h1>
+
+{{#if model.length}}
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th>
+          Teams
+        </th>
+        <th>
+          Projects
+        </th>
+        <th>
+          Topic
+        </th>
+        <th>
+          Votes
+        </th>
+        <th>
+          Comments
+        </th>
+        <th>
+          Tags
+        </th>
+        <th>
+          Battlestatus
+        </th>
+        <th>
+          Timetable
+        </th>
+        <th colspan="3">
+          Actions
+        </th>
+      </tr>
+    </thead>
+    <tbody class="table-striped">
+      {{#each model as |battle|}}
+        <tr>
+          <td>
+            {{battle.teams}}
+          </td>
+          <td>
+            {{battle.projects}}
+          </td>
+          <td>
+            {{battle.topic}}
+          </td>
+          <td>
+            {{battle.votes}}
+          </td>
+          <td>
+            {{battle.comments}}
+          </td>
+          <td>
+            {{battle.tags}}
+          </td>
+          <td>
+            {{battle.battleStatus}}
+          </td>
+          <td>
+            {{battle.timetable}}
+          </td>
+          <td>
+            {{link-to "Edit" "battles.edit" battle}}
+            {{link-to "Show" "battles.show" battle}}
+            <a href="#" {{action "remove" battle}}>Remove</a>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+{{else}}
+  <p id="blankslate">
+    Nie znaleziono żadnych bitew.
+  </p>
+{{/if}}

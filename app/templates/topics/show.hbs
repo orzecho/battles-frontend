@@ -1,0 +1,50 @@
+<p>
+  {{link-to "Powrót do listy tematów" "topics.index" }}
+</p>
+
+<div id="accordion">
+  <div class="card">
+    <div class="card-header">
+      <h5 class="mb-0">
+        <strong>Temat:</strong>
+        <span>{{model.value}}</span>
+      </h5>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      <h5 class="mb-0">
+        <strong>Głosy:</strong>
+        <span>{{model.meanVote}} / {{model.numberOfVotes}}</span>
+      </h5>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingThree">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          <strong>Bitwy</strong>
+        </button>
+      </h5>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+      <div class="card-body">
+        <span>{{model.battles}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingThree">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseComments" aria-expanded="false" aria-controls="collapseComments">
+          <strong>Komentarze</strong>
+        </button>
+      </h5>
+    </div>
+    <div id="collapseComments" class="collapse" aria-labelledby="collapseComments" data-parent="#accordion">
+      <div class="card-body">
+        <span>{{model.comments}}</span>
+      </div>
+    </div>
+  </div>
+</div>

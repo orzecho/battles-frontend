@@ -1,4 +1,29 @@
 export default function() {
+this.get('/topics');
+this.get('/topics/:id');
+this.post('/topics');
+this.del('/topics/:id');
+this.patch('/topics/:id');
+this.get('/tags');
+this.get('/tags/:id');
+this.post('/tags');
+this.del('/tags/:id');
+this.patch('/tags/:id');
+this.get('/teams');
+this.get('/teams/:id');
+this.post('/teams');
+this.del('/teams/:id');
+this.patch('/teams/:id');
+this.get('/battles');
+this.get('/battles/:id');
+this.post('/battles');
+this.del('/battles/:id');
+this.patch('/battles/:id');
+this.get('/projects');
+this.get('/projects/:id');
+this.post('/projects');
+this.del('/projects/:id');
+this.patch('/projects/:id');
 
   // These comments are here to help you get started. Feel free to delete them.
 

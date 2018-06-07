@@ -1,0 +1,56 @@
+<h1>Lista projektów</h1>
+
+<p>
+  {{link-to "Nowy projekt" "projects.new" }}
+</p>
+
+{{#if model.length}}
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th>
+          Nazwa
+        </th>
+        <th>
+          Drużyna
+        </th>
+        <th>
+          Komentarze
+        </th>
+        <th>
+          Głosy
+        </th>
+        <th>
+          Akcje
+        </th>
+      </tr>
+    </thead>
+    <tbody class="table-striped">
+      {{#each model as |project|}}
+        <tr>
+          <td>
+            {{project.name}}
+          </td>
+          <td>
+            {{project.team.name}}
+          </td>
+          <td>
+            {{project.comments.length}}
+          </td>
+          <td>
+            {{project.meanVote}} / {{project.numberOfVotes}}
+          </td>
+          <td>
+            {{link-to "Edytuj" "projects.edit" project}}
+            {{link-to "Pokaż" "projects.show" project}}
+            <a href="#" {{action "remove" project}}>Usuń</a>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+{{else}}
+  <p id="blankslate">
+    Nie ma jeszcze żadnych projektów :(
+  </p>
+{{/if}}
