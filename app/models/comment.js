@@ -1,6 +1,6 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-  user: DS.belongsTo('user'),
+  battleUser: DS.belongsTo('battle-user'),
   content: DS.attr('string')
 });

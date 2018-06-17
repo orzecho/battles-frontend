@@ -20,7 +20,7 @@
       Drużyna
     </label>
     <div class="col-sm-9 col-md-11">
-      {{input type="text" value=currentUser.team.name disabled=true}}
+      {{input type="text" value=model.team.name disabled=true}}
     </div>
   </div>
   <div class="form-group row">
@@ -28,10 +28,18 @@
       Bitwa
     </label>
     <div class="col-sm-9 col-md-11">
-      {{x-select type="text" model=availableBattles labelKey='topic' valueKey='battle' value=model.battle}}
+      {{x-select
+        type="object"
+        model=availableBattles
+        labelKey='topic'
+        valueKey='battle'
+        value=selectedBattleOption
+        required=true
+        onSelect=(action (mut model.battle))
+      }}
     </div>
   </div>
   <div>
-    <input type="submit" value="Zapisz">
+    <input type="submit" value="Zapisz" disabled={{saveDisabled}}>
   </div>
 </form>

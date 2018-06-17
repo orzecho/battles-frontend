@@ -11,7 +11,7 @@ export default Ember.Route.extend({
     },
     join: function(team) {
       this.get('ajax').request('/join-team/' + team.get('id'));
-      model.refresh()
+      window.location = '/teams';
     },
     leave: function(team) {
       this.get('ajax').request('/leave-team/' + team.get('id'));

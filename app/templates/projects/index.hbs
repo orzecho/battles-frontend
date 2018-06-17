@@ -1,7 +1,9 @@
 <h1>Lista projektów</h1>
 
 <p>
-  {{link-to "Nowy projekt" "projects.new" }}
+  {{#unless newProjectDisabled}}
+    {{link-to "Nowy projekt" "projects.new" }}
+  {{/unless}}
 </p>
 
 {{#if model.length}}
@@ -38,7 +40,8 @@
             {{project.comments.length}}
           </td>
           <td>
-            {{project.meanVote}} / {{project.numberOfVotes}}
+            {{star-rating project.meanVote
+                          onClick=(action (route-action "updateVote" project))}} / {{project.numberOfVotes}}
           </td>
           <td>
             {{link-to "Edytuj" "projects.edit" project}}
