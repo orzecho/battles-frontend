@@ -9,6 +9,10 @@ export default Ember.Route.extend({
     }
   },
   model: function() {
+    this.store.findAll('team');
+    this.store.findAll('topic');
+    this.store.findAll('project');
+    this.store.findAll('timetable');
     return this.store.findAll('battle');
   }
 });

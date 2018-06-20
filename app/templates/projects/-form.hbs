@@ -1,32 +1,35 @@
 <form {{action "save" on="submit"}}>
-  <div class="form-group row">
+  <div class="form-group">
     <label class="col-sm-2 col-md-1 col-form-label">
-      Nazwa
+      <h4>Nazwa</h4>
     </label>
     <div class="col-sm-9 col-md-11">
-      {{input type="text" value=model.name}}
+      {{#validated-field model=model valuePath='name' didValidate=didValidate}}
+        {{input class='form-control' type="text" value=model.name}}
+      {{/validated-field}}
     </div>
   </div>
-  <div class="form-group row">
+  <div class="form-group">
     <label class="col-sm-2 col-md-1 col-form-label">
-      Opis
+      <h4>Opis</h4>
     </label>
     <div class="col-sm-9 col-md-11">
-      {{textarea type="text" value=model.description}}
+      {{textarea class='form-control' type="text" value=model.description}}
     </div>
   </div>
-  <div class="form-group row">
+  <div class="form-group">
     <label class="col-sm-2 col-md-1 col-form-label">
-      Drużyna
+      <h4>Drużyna</h4>
     </label>
     <div class="col-sm-9 col-md-11">
-      {{input type="text" value=model.team.name disabled=true}}
+      {{input class='form-control' type="text" value=(get model 'team.name') disabled=true}}
     </div>
   </div>
-  <div class="form-group row">
+  <div class="form-group">
     <label class="col-sm-2 col-md-1 col-form-label">
-      Bitwa
+      <h4>Bitwa</h4>
     </label>
+    <div class="row ml-1 mr-1">
     <div class="col-sm-9 col-md-11">
       {{x-select
         type="object"
@@ -38,8 +41,23 @@
         onSelect=(action (mut model.battle))
       }}
     </div>
+    <div class="col-sm-3 col-md-1">
+      {{#unless saveDisabled}}
+        <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+          Szczegóły bitwy
+        </a>
+      {{/unless}}
+    </div>
+    </div>
+      <div class="col-sm-9 col-md-11">
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+          {{battle-details battleId=model.battle.id}}
+        </div>
+      </div>
+    </div>
   </div>
   <div>
-    <input type="submit" value="Zapisz" disabled={{saveDisabled}}>
+    <input type="submit" class="btn btn-primary" value="Zapisz" disabled={{saveDisabled}}>
   </div>
 </form>

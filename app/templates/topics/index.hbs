@@ -30,9 +30,9 @@
               onClick=(action (route-action "updateVote" topic))}} / {{topic.numberOfVotes}}
           </td>
           <td>
-            {{link-to "Edytuj" "topics.edit" topic}}
-            {{link-to "Pokaż" "topics.show" topic}}
-            <a href="#" {{action "remove" topic}}>Usuń</a>
+            {{link-to "Edytuj" "topics.edit" topic class="btn btn-outline-primary"}}
+            {{link-to "Pokaż" "topics.show" topic class="btn btn-outline-primary"}}
+            <a href="#" class="btn btn-outline-primary" {{action "remove" topic}}>Usuń</a>
           </td>
         </tr>
       {{/each}}

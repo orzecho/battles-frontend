@@ -21,10 +21,10 @@ export default Ember.Route.extend({
     this._super(...arguments);
     this.store.findRecord('cuser', 1).then(u => {
       controller.set('currentUser', u);
-      if(Ember.isEmpty(u.get('team'))) {
+      if(Ember.isEmpty(u.get('team.id'))) {
         controller.set('newProjectDisabled', true);
       } else {
-        this.set('newProjectDisabled', false);
+        controller.set('newProjectDisabled', false);
       }
     });
   }

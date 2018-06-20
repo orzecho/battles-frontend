@@ -3,5 +3,7 @@ import csrfMixin from '../mixins/csrf'
 
 
 export default DS.RESTAdapter.extend(csrfMixin, {
-  // host: 'http://localhost:8080'
+  shouldReloadAll() {
+    return true;
+  }
 });

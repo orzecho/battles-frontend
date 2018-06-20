@@ -1,0 +1,12 @@
+<h4>Identyfikator</h4>
+{{battle.id}}
+<h4>Status bitwy</h4>
+{{battle.battleStatus}}
+<h4>Temat</h4>
+{{battle.topic.value}}
+<h4>Drużyny</h4>
+{{#each battle.teams as |team|}}
+  <p>{{team.name}}</p>
+{{else}}
+  Brak drużyn.
+{{/each}}

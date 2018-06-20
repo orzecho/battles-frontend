@@ -36,16 +36,16 @@
             {{team.leader.login}}
           </td>
           <td>
-            {{link-to "Edytuj" "teams.edit" team}}
-            {{link-to "Szczegóły" "teams.show" team}}
+            {{link-to "Edytuj" "teams.edit" team class="btn btn-outline-primary"}}
+            {{link-to "Szczegóły" "teams.show" team class="btn btn-outline-primary"}}
           {{#if (eq team.leader.id currentUser.id)}}
-            <a href="#" {{action "remove" team}}>Usuń</a>
+            <a class="btn btn-outline-primary" href="#" {{action "remove" team}}>Usuń</a>
           {{/if}}
           {{#unless (eq team.id currentUser.team.id)}}
-            <a href="#" {{action "join" team}}>Dołącz</a>
+            <a class="btn btn-outline-primary" href="#" {{action "join" team}}>Dołącz</a>
           {{/unless}}
           {{#if (eq team.id currentUser.team.id)}}
-            <a href="#" {{action "leave" team}}>Opuść</a>
+            <a class="btn btn-outline-primary" href="#" {{action "leave" team}}>Opuść</a>
           {{/if}}
           </td>
         </tr>

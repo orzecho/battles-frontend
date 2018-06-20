@@ -17,7 +17,7 @@
           Status bitwy
         </th>
         <th>
-          Timetable
+          Termin
         </th>
         <th>
           Akcje
@@ -28,12 +28,10 @@
       {{#each model as |battle|}}
         <tr>
           <td>
-            {{#each battle.projects as |project|}}<p>{{#link-to 'projects.show' project}}{{get project team}}{{/link-to}}</p>{{/each}}
+            {{#each battle.teams as |team|}}<p>{{#link-to 'teams.show' team}}{{team.name}}{{/link-to}}</p>{{else}}brak{{/each}}
           </td>
           <td>
-            {{#let (get battle topic) as |topic|}}
-              {{topic.value}}
-            {{/let}}
+            {{get battle 'topic.value'}}
           </td>
           <td>
             {{#each battle.projects as |project|}}<p>{{project.votes.length}}</p>{{/each}}
@@ -42,11 +40,11 @@
             {{battle.battleStatus}}
           </td>
           <td>
-            {{battle.timetable}}
+
           </td>
           <td>
-            {{link-to "Show" "battles.show" battle}}
-            <a href="#" {{action "remove" battle}}>Remove</a>
+            {{link-to "Show" "battles.show" battle class="btn btn-outline-primary"}}
+            <a href="#" class="btn btn-outline-primary" {{action "remove" battle}}>Remove</a>
           </td>
         </tr>
       {{/each}}

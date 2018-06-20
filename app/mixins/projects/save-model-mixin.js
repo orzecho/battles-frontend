@@ -7,10 +7,14 @@ export default Ember.Mixin.create({
   actions: {
     save: function() {
       var route = this;
-      this.currentModel.save().then(function() {
-        route.transitionTo('projects');
+      this.currentModel.validate().then(({validations}) => {
+        if(validations.get('isValid')) {
+          this.currentModel.save().then(() => route.transitionTo('projects'));
+        } else {
+          this.get('flashMessages').danger('Błędnie wypełniony formularz.');
+        }
       }, function() {
-        console.log('Failed to save the model');
+        this.get('flashMessages').danger('Nie udało się zapisać projektu');
       });
     },
 
@@ -22,7 +26,6 @@ export default Ember.Mixin.create({
 
     selectBattle(value, option) {
       this.model.set('battle', value);
-      debugger;
     }
   },
 
@@ -31,7 +34,7 @@ export default Ember.Mixin.create({
     this.store.query('battle', {onlyOwned: true}).then(ownedBattles => {
       if(Ember.isEmpty(ownedBattles)) {
         this.get('flashMessages').danger("Brak dostępnych bitew.");
-        this.set('saveDisabled', true);
+        controller.set('saveDisabled', true);
       } else {
         this.set('saveDisabled', false);
       }
@@ -41,7 +44,8 @@ export default Ember.Mixin.create({
         this.store.findRecord('topic', parseInt(battle.get('topic.id'))).then(t => {
           availableBattles.push({topic: t.get('value'), battle: battle});
           controller.set('availableBattles', availableBattles);
-          controller.set('selectedBattleOption', {topic: {topic: t.get('value'), battle: battle}})
+          controller.set('selectedBattleOption', t.get('value'))
+          controller.set('model.battle', battle);
         });
       });
     });

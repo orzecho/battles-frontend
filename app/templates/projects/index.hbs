@@ -44,9 +44,9 @@
                           onClick=(action (route-action "updateVote" project))}} / {{project.numberOfVotes}}
           </td>
           <td>
-            {{link-to "Edytuj" "projects.edit" project}}
-            {{link-to "Pokaż" "projects.show" project}}
-            <a href="#" {{action "remove" project}}>Usuń</a>
+            {{link-to "Edytuj" "projects.edit" project class="btn btn-outline-primary"}}
+            {{link-to "Pokaż" "projects.show" project class="btn btn-outline-primary"}}
+            <a href="#" class="btn btn-outline-primary" {{action "remove" project}}>Usuń</a>
           </td>
         </tr>
       {{/each}}
